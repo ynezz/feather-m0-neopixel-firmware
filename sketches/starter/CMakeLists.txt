@@ -1,0 +1,6 @@
+set(TARGET_BINARY_NAME neopixel-starter)
+add_executable_samd(${TARGET_BINARY_NAME} main.cpp)
+target_sketch_library(${TARGET_BINARY_NAME} Adafruit_NeoPixel "")
+# target_sketch_library(${TARGET_BINARY_NAME} Adafruit_GFX "")
+# target_sketch_library(${TARGET_BINARY_NAME} Adafruit_NeoMatrix "")
+target_link_libraries(${TARGET_BINARY_NAME} arduino-core)

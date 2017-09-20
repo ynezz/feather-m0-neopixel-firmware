@@ -1,0 +1,4 @@
+config.local.cmake
+build*/*
+arduino_ide/*
+toolchain*/*

@@ -1,0 +1,33 @@
+machine:
+  environment:
+    PATH: "$HOME/cmake-3.9.0-Linux-x86_64/bin:$PATH"
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
+dependencies:
+  cache_directories:
+    - ~/cmake-3.9.0-Linux-x86_64
+    - toolchain-1.8.3
+  override:
+    - >
+      if [ ! -d ~/cmake-3.9.0-Linux-x86_64 ]; then
+        echo "No cache - building CMake"
+        cd ~ && wget --quiet https://cmake.org/files/v3.9/cmake-3.9.0-Linux-x86_64.tar.gz && tar -xvf cmake-3.9.0-Linux-x86_64.tar.gz
+      else
+        echo "Cached CMake found"
+      fi
+    - >
+      if [ ! -d toolchain-1.8.3 ]; then
+        echo "No cache - downloading toolchain package"
+        mkdir toolchain-1.8.3 && cd toolchain-1.8.3 && wget --quiet http://ynezz.ibawizard.net/private/arduino_packages_v1.8.3.tar
+      else
+        echo "Cached toolchain package found"
+      fi
+
+
+test:
+  override:
+    - make build TARGET_DEVICE="FEATHER_M0_NEOPIXEL"

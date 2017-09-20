@@ -1,0 +1,6 @@
+[submodule "3rdparty/ArduinoCore-samd"]
+	path = 3rdparty/ArduinoCore-samd
+	url = https://github.com/adafruit/ArduinoCore-samd.git
+[submodule "sketches/libraries/Adafruit_NeoPixel"]
+	path = sketches/libraries/Adafruit_NeoPixel
+	url = https://github.com/adafruit/Adafruit_NeoPixel
