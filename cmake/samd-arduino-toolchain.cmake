@@ -251,7 +251,8 @@ function(target_sketch_library TARGET NAME URL)
 			endif ()
 
 			# now add a library target
-			file(GLOB_RECURSE libsources FOLLOW_SYMLINKS ${MYLIBS}/${NAME}/*.S ${MYLIBS}/${NAME}/*.c ${MYLIBS}/${NAME}/*.cpp)
+			file(GLOB_RECURSE libsources FOLLOW_SYMLINKS
+				${MYLIBS}/${NAME}/*.S ${MYLIBS}/${NAME}/*.c ${MYLIBS}/${NAME}/*.cpp ${MYLIBS}/${NAME}/*.h)
 			# go through list of sources and remove the examples
 			foreach (file ${libsources})
 				STRING(REGEX MATCH "/examples?/|/tests?/" example ${file})
