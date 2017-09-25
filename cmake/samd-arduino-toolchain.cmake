@@ -55,6 +55,9 @@ endif()
 if (NOT DEFINED MONITOR_CMD)
 	set(MONITOR_CMD ${SCREEN})
 endif()
+if (NOT DEFINED MONITOR_DEV)
+	set(MONITOR_DEV ${SERIAL_DEV})
+endif()
 if (NOT DEFINED MONITOR_ARGS)
 	set(MONITOR_ARGS ${MONITOR_DEV} ${MONITOR_BAUD})
 endif()
@@ -119,7 +122,7 @@ function(add_executable_samd NAME)
 
 		add_custom_target(
 			${NAME}-monitor
-			COMMAND ${MONITOR} ${MONITOR_ARGS})
+			COMMAND sleep 1 && ${MONITOR_CMD} ${MONITOR_ARGS})
 	endif ()
 endfunction(add_executable_samd)
 
