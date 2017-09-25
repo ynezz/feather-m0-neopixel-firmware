@@ -255,7 +255,7 @@ function(target_sketch_library TARGET NAME URL)
 				${MYLIBS}/${NAME}/*.S ${MYLIBS}/${NAME}/*.c ${MYLIBS}/${NAME}/*.cpp ${MYLIBS}/${NAME}/*.h)
 			# go through list of sources and remove the examples
 			foreach (file ${libsources})
-				STRING(REGEX MATCH "/examples?/|/tests?/" example ${file})
+				STRING(REGEX MATCH "/examples?/|/tests?/|/extras?/|/fontconvert?/" example ${file})
 				if (NOT example)
 					list(APPEND sources ${file})
 				endif ()
